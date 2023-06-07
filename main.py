@@ -1,6 +1,19 @@
+from tkinter import *
 import math
 import unittest
-# Кулабухова Екатерина Олеговна, 44-22-122, 16
+
+window = Tk()
+window.title('Расчёт')
+window.geometry('500x400')
+
+def calculate():
+    val = value1.get().split(';')
+    mas = []
+    for item in val:
+        mas.append(float(item))
+    result = Function(mas)
+    label2["text"] = ", ".join(str(i) for i in result)
+
 def Main(args):
     numbers = []
 
@@ -23,11 +36,9 @@ def Main(args):
         result = Function(numbers)
 
         for arg in result:
-
             print(arg)
     except Exception as ex:
         print(ex.Message)
-
 
 def Function(args):
     result = []
@@ -73,7 +84,6 @@ class TryParseHelper:
         except:
             return False
 
-
 class TestStringMethods(unittest.TestCase):
 
     def test_function(self):
@@ -81,10 +91,42 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(1.06791161795298, result[0])
         self.assertEqual(-0.263018810145151, result[1])
 
-def main():
-    Main([])
+
+frame = Frame(
+    window,
+    padx=10,
+    pady=10
+)
+frame.pack(expand=True)
+
+label1 = Label(
+    frame,
+    text="Введите значение  "
+)
+label1.grid(row=3, column=1)
+
+label2 = Label(
+    frame,
+    text="Результат  ",
+)
+label2.grid(row=4, column=1)
+
+value1 = Entry(
+    frame,
+)
+value1.grid(row=3, column=2, pady=5)
 
 
-if __name__ == "__main__":
-    unittest.main()
-    #main()
+
+cal_btn = Button(
+    frame,
+    text='Рассчитать ',
+    command=calculate
+)
+cal_btn.grid(row=5, column=2)
+
+window.mainloop()
+
+
+
+
