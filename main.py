@@ -2,6 +2,8 @@ from tkinter import *
 import math
 import unittest
 
+#Кулабухова Екатерина Олеговна, группа 44-22-122, вариант 16
+
 window = Tk()
 window.title('Расчёт')
 window.geometry('500x400')
