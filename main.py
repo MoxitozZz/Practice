@@ -9,12 +9,16 @@ window.title('Расчёт')
 window.geometry('500x400')
 
 def calculate():
-    val = value1.get().split(';')
-    mas = []
-    for item in val:
-        mas.append(float(item))
-    result = Function(mas)
-    label2["text"] = ", ".join(str(i) for i in result)
+    try:
+        val = value1.get().split(';')
+        mas = []
+        for item in val:
+            mas.append(float(item))
+        result = Function(mas)
+        label2["text"] = ", ".join(str(i) for i in result)
+
+    except Exception as ex:
+        print(ex.Message)
 
 def Main(args):
     numbers = []
